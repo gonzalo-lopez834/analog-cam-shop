@@ -1,114 +1,93 @@
-body {
-    font-family: 'Roboto Mono', monospace;
-    margin: 0;
-    background: #fdfcf8;
-    color: #222;
-}
-
-header {
-    background-color: #2c2c2c;
-    color: white;
-    padding: 2rem 1rem;
-    text-align: center;
-}
-
-nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    list-style: none;
-    padding: 0;
-    margin-top: 1rem;
-}
-
-nav a {
-    color: #ffd369;
-    text-decoration: none;
-    font-weight: bold;
-}
-
 main section {
     text-align: center;
     padding: 2rem 1rem;
-}
-
-.video {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .video {
     display: flex;
     justify-content: center;
     margin: 1rem 0;
-}
-
-.productos {
+  }
+  
+  .productos {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
     padding: 2rem 0;
-}
-
-.card {
+  }
+  
+  .card {
     background: #fff;
     border: 1px solid #ccc;
     padding: 1rem;
-    width: 200px;
+    width: 240px;
     text-align: center;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.card img {
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .card img {
     max-width: 100%;
     height: auto;
+    object-fit: cover;
+    border-radius: 4px;
     margin-bottom: 0.5rem;
-}
-
-.reseñas .grid {
+  }
+  
+  .reseñas .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     justify-items: center;
     gap: 1.5rem;
     margin: 2rem 0;
-}
-
-#contacto form {
+  }
+  
+  #contacto form {
     margin: 0 auto;
     max-width: 400px;
     text-align: left;
     display: flex;
     flex-direction: column;
-}
-
-#contacto input,
-#contacto textarea {
+  }
+  
+  #contacto input, #contacto textarea {
     margin: 0.5rem 0;
     padding: 0.7rem;
     border: 1px solid #aaa;
-}
-
-#contacto button {
+  }
+  
+  #contacto button {
     background-color: #222;
     color: white;
     padding: 0.7rem;
     border: none;
     cursor: pointer;
     margin-top: 1rem;
-}
-
-footer {
+  }
+  
+  footer {
     background: #2c2c2c;
     color: white;
     text-align: center;
     padding: 1rem;
     font-size: 0.9rem;
-}
-
-@media (max-width: 600px) {
+  }
+  
+  @media (max-width: 600px) {
     nav ul {
-        flex-direction: column;
-        align-items: center;
+      flex-direction: column;
+      align-items: center;
     }
-
+  
     .productos {
-        flex-direction: column;
-        align-items: center;
+      flex-direction: column;
+      align-items: center;
     }
-}
+  
+    .card {
+      width: 90%;
+    }
+  }
+  
