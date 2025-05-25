@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anlog Cam Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <h1>📷 Analog Cam Shop</h1>
+        <p>Tu lugar para revivir la magia de la fotografia analogica</p>
+        <nav>
+            <ul>
+                <li><a href="#Inicio">Inicio</a></li>
+                <li><a href="#Productos">Cámaras</a></li>
+                <li><a href="#Reseñas">Reseñas</a></li>
+                <li><a href="#Contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="inicio">
+            <h2>Bienvenido</h2>
+            <p>Especialistas en cámaras analógicas.</p>
+            <video controls>
+                <source src="video/historia-camaras.mp4" type="video/mp4" />
+                Tu navegador no soporta el video.
+            </video>
+        </section>
+
+        <section id="productos" class="productos">
+            <h2>Nuestras Cámaras</h2>
+            <div class="card">
+                <img src="img/canon-ae1.jpg" alt="Canon AE-1" />
+                <p><strong>Canon AE-1</strong><br />$300.000 ARS</p>
+            </div>
+            <div class="card">
+                <img src="img/olympus-om10.jpg" alt="Olympus OM-10" />
+                <p><strong>Olympus OM-10</strong><br />$550.000 ARS</p>
+            </div>
+        </section>
+
+        <section id="reseñas" class="reseñas">
+            <h2>Opinioees de nuestros clientes</h2>
+            <div class="grid">
+                <div>"¡La Canon AE-1 me cambió la forma de ver la fotografía!"</div>
+                <div>"Entrega rápida y atención impecable."</div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <form action="https://formspree.io/f/tu_codigo_aqui" method="POST">
+                <input type="text" name="nombre" placeholder="Tu nombre" required />
+                <input type="email" name="email" placeholder="Tu email" required />
+                <textarea name="mensaje" placeholder="Tu consulta..." required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Analog Cam Shop | 📸 Hecho con amor por la fotografia de 35mm</p>
+    </footer>
+</body>
+
+</html>
