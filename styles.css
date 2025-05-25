@@ -27,52 +27,70 @@ nav a {
     font-weight: bold;
 }
 
+main section {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.video {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
 .productos {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    padding: 2rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem 0;
 }
 
 .card {
     background: #fff;
     border: 1px solid #ccc;
-    margin: 1rem;
     padding: 1rem;
     width: 200px;
     text-align: center;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0.5rem;
+}
+
 .reseñas .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    padding: 1rem;
-    margin: 0 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-items: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
 }
 
 #contacto form {
+    margin: 0 auto;
+    max-width: 400px;
+    text-align: left;
     display: flex;
     flex-direction: column;
-    max-width: 400px;
-    margin: auto;
-    padding: 2rem;
 }
 
-input,
-textarea {
+#contacto input,
+#contacto textarea {
     margin: 0.5rem 0;
     padding: 0.7rem;
     border: 1px solid #aaa;
 }
 
-button {
+#contacto button {
     background-color: #222;
     color: white;
     padding: 0.7rem;
     border: none;
     cursor: pointer;
+    margin-top: 1rem;
 }
 
 footer {
