@@ -1,0 +1,40 @@
+# Node modules
+node_modules/
+
+# Dependency directories
+yarn.lock
+package-lock.json
+
+# Build output
+dist/
+build/
+
+# System files
+.DS_Store
+Thumbs.db
+*.log
+
+# VS Code settings
+.vscode/
+
+# Environment files
+.env
+.env.*
+
+# OS generated files
+*.swp
+*.swo
+
+# SASS cache
+.sass-cache/
+
+# Coverage reports
+coverage/
+
+# Misc
+*.tgz
+*.zip
+*.tar.gz
+
+# Entorno Virtual
+venv/
