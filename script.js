@@ -187,4 +187,72 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.querySelector('.btn-cerrar-carrito')) {
     document.querySelector('.btn-cerrar-carrito').remove();
   }
+  // Validación de formulario de contacto
+  const form = document.querySelector("form");
+  if (form) {
+    form.addEventListener("submit", async function (e) {
+      const nombre = this.nombre.value.trim();
+      const email = this.email.value.trim();
+      const mensaje = this.mensaje.value.trim();
+      const errores = [];
+
+      if (!nombre) errores.push("El nombre no puede estar vacío");
+      if (!mensaje) errores.push("El mensaje no puede estar vacío");
+      if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) errores.push("El email no es válido");
+
+      if (errores.length > 0) {
+        e.preventDefault();
+        alert("Errores en el formulario:\n" + errores.join("\n"));
+        return;
+      }
+
+      // Enviar el formulario vía fetch para evitar redirección
+      e.preventDefault();
+      const formData = new FormData(this);
+      const mensajeExito = document.getElementById('mensaje-exito');
+      if (mensajeExito) mensajeExito.style.display = 'none';
+      try {
+        const response = await fetch(this.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          this.reset();
+          if (mensajeExito) {
+            mensajeExito.textContent = "¡Gracias por tu mensaje! Te responderemos pronto.";
+            mensajeExito.style.display = 'block';
+            mensajeExito.style.color = '#388e3c';
+            mensajeExito.style.background = '#e8f5e9';
+            mensajeExito.style.padding = '1em';
+            mensajeExito.style.marginTop = '1em';
+            mensajeExito.style.borderRadius = '6px';
+            setTimeout(() => { mensajeExito.style.display = 'none'; }, 6000);
+          }
+        } else {
+          if (mensajeExito) {
+            mensajeExito.textContent = "Ocurrió un error al enviar el formulario. Intenta nuevamente más tarde.";
+            mensajeExito.style.display = 'block';
+            mensajeExito.style.color = '#b71c1c';
+            mensajeExito.style.background = '#ffebee';
+            mensajeExito.style.padding = '1em';
+            mensajeExito.style.marginTop = '1em';
+            mensajeExito.style.borderRadius = '6px';
+            setTimeout(() => { mensajeExito.style.display = 'none'; }, 6000);
+          }
+        }
+      } catch (err) {
+        if (mensajeExito) {
+          mensajeExito.textContent = "Ocurrió un error de red. Intenta nuevamente más tarde.";
+          mensajeExito.style.display = 'block';
+          mensajeExito.style.color = '#b71c1c';
+          mensajeExito.style.background = '#ffebee';
+          mensajeExito.style.padding = '1em';
+          mensajeExito.style.marginTop = '1em';
+          mensajeExito.style.borderRadius = '6px';
+          setTimeout(() => { mensajeExito.style.display = 'none'; }, 6000);
+        }
+      }
+    });
+  }
 });
