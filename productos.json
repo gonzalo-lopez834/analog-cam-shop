@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "nombre": "Canon AE-1",
+    "precio": 300000,
+    "imagen": "img/canon-ae-1.jpeg"
+  },
+  {
+    "id": 2,
+    "nombre": "Konica Autoreflex",
+    "precio": 250000,
+    "imagen": "img/konica-autojpeg.jpeg"
+  },
+  {
+    "id": 3,
+    "nombre": "Minolta XG7",
+    "precio": 270000,
+    "imagen": "img/minolta-xg7.png"
+  },
+  {
+    "id": 4,
+    "nombre": "Nikon FA",
+    "precio": 420000,
+    "imagen": "img/nikon-fa.png"
+  },
+  {
+    "id": 5,
+    "nombre": "Nikon N2020",
+    "precio": 350000,
+    "imagen": "img/nikon-n2020.png"
+  },
+  {
+    "id": 6,
+    "nombre": "Ricoh Singlex II",
+    "precio": 240000,
+    "imagen": "img/ricoh-singlex-2.png"
+  },
+  {
+    "id": 7,
+    "nombre": "Zenit TTL",
+    "precio": 190000,
+    "imagen": "img/zenit-ttl.png"
+  },
+
+  {
+    "id": 8,
+    "nombre": "Olympus OM-1",
+    "precio": 280000,
+    "imagen": "img/olympus-om10.jpeg"
+  }
+]
