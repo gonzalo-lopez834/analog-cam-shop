@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <img src="${p.imagen}" alt="${p.nombre}" />
         <p><strong>${p.nombre}</strong><br />$${p.precio.toLocaleString()} ARS</p>
         <button class="btn-agregar" data-id="${p.id}">Agregar al carrito</button>
+        <div class="mensaje-agregado" style="display:none;opacity:0;transition:opacity 0.5s;"></div>
       `;
       contenedor.appendChild(div);
     });
@@ -44,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Buscamos el producto original por ID
         const productoSeleccionado = productosGlobal.find(p => p.id === id);
-
         if (!productoSeleccionado) return;
 
         // ¿Ya está en el carrito? Sumamos cantidad. Si no, lo agregamos.
@@ -57,9 +57,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Guardamos en localStorage
         localStorage.setItem("carrito", JSON.stringify(carrito));
-
         console.log("Carrito actualizado:", carrito);
         renderVistaCarrito();
+
+        // Mostrar mensaje de éxito debajo del botón
+        const mensajeDiv = btn.parentElement.querySelector('.mensaje-agregado');
+        if (mensajeDiv) {
+          mensajeDiv.textContent = '¡Producto agregado al carrito!';
+          mensajeDiv.style.display = 'block';
+          mensajeDiv.style.opacity = '1';
+          mensajeDiv.style.color = '#388e3c';
+          mensajeDiv.style.background = '#e8f5e9';
+          mensajeDiv.style.padding = '0.5em';
+          mensajeDiv.style.marginTop = '0.5em';
+          mensajeDiv.style.borderRadius = '6px';
+          // Ocultar suavemente
+          setTimeout(() => {
+            mensajeDiv.style.opacity = '0';
+            setTimeout(() => {
+              mensajeDiv.style.display = 'none';
+            }, 500);
+          }, 2000);
+        }
       });
     });
   }

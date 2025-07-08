@@ -196,11 +196,14 @@ main section {
 }
 
 .card img {
-  max-width: 100%;
-  height: auto;
+  width: 200px;
+  height: 150px;
   object-fit: cover;
   border-radius: 4px;
   margin-bottom: 0.5rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ===== Video ===== */
@@ -235,14 +238,54 @@ main section {
   border: 1px solid var(--color-metal-gray);
 }
 
-#contacto button {
-  background-color: var(--color-carbon-gray);
-  color: white;
-  padding: 0.7rem;
+
+/* ===== Botones generales ===== */
+button, .btn-agregar, .btn-mas, .btn-menos, .btn-borrar, .btn-vaciar-carrito {
+  background: var(--color-kodak-yellow);
+  color: var(--color-black-charcoal);
   border: none;
-  cursor: pointer;
-  margin-top: 1rem;
+  border-radius: 6px;
+  padding: 0.6em 1.2em;
+  font-size: 1rem;
+  font-family: inherit;
   font-weight: bold;
+  cursor: pointer;
+  box-shadow: 1px 2px 6px rgba(60,60,60,0.08);
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  margin: 0.2em 0.2em 0.2em 0;
+  outline: none;
+}
+
+button:hover, .btn-agregar:hover, .btn-mas:hover, .btn-menos:hover, .btn-borrar:hover, .btn-vaciar-carrito:hover {
+  background: var(--color-retro-red);
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* Botón de borrar (🗑️) más pequeño y con color de alerta */
+.btn-borrar {
+  background: var(--color-retro-red);
+  color: #fff;
+  padding: 0.4em 0.7em;
+  font-size: 1.1em;
+}
+.btn-borrar:hover {
+  background: #7a1d0e;
+  color: #fff;
+}
+
+/* Botón de vaciar carrito destacado */
+.btn-vaciar-carrito {
+  background: var(--color-carbon-gray);
+  color: var(--color-kodak-yellow);
+  font-size: 1.1em;
+  padding: 0.7em 2em;
+  margin: 1em auto 2em auto;
+  display: block;
+}
+.btn-vaciar-carrito:hover {
+  background: var(--color-retro-red);
+  color: #fff;
 }
 
 /* ===== Footer ===== */
