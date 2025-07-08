@@ -85,13 +85,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Mostrar/Ocultar vista carrito y navegación entre secciones
   function mostrarSeccion(id) {
-    document.querySelectorAll('main > section').forEach(sec => {
-      if (sec.id === id) {
-        sec.classList.remove('hidden');
-      } else {
-        sec.classList.add('hidden');
-      }
-    });
+    if (id === 'inicio') {
+      document.querySelectorAll('main > section').forEach(sec => {
+        if (sec.id !== 'vista-carrito') {
+          sec.classList.remove('hidden');
+          sec.style.display = 'block';
+          void sec.offsetWidth;
+          sec.style.opacity = '1';
+        } else {
+          sec.style.opacity = '0';
+          setTimeout(() => {
+            sec.style.display = 'none';
+            sec.classList.add('hidden');
+          }, 500);
+        }
+      });
+    } else {
+      document.querySelectorAll('main > section').forEach(sec => {
+        if (sec.id === id) {
+          sec.classList.remove('hidden');
+          sec.style.display = 'block';
+          void sec.offsetWidth;
+          sec.style.opacity = '1';
+        } else {
+          sec.style.opacity = '0';
+          setTimeout(() => {
+            sec.style.display = 'none';
+            sec.classList.add('hidden');
+          }, 500);
+        }
+      });
+    }
     if (id === 'vista-carrito') renderVistaCarrito();
   }
 
