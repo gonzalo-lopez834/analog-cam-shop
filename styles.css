@@ -401,3 +401,42 @@ footer {
     width: 90%;
   }
 }
+
+.botones-carrito {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+.btn-carrito-control {
+  flex: 1 1 45%;
+  padding: 0.75em 1.5em;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+  text-align: center;
+}
+
+.btn-carrito-control.vaciar {
+  background: var(--color-kodak-yellow);
+  color: var(--color-black-charcoal);
+}
+ .btn-carrito-control.vaciar:hover {
+  background: var(--color-retro-red);
+  color: #fff;
+}
+
+.btn-carrito-control.finalizar {
+  background: var(--color-black-charcoal);
+  color: var(--color-kodak-yellow);
+}
+ .btn-carrito-control.finalizar:hover {
+  background: var(--color-carbon-gray);
+  color: var(--color-kodak-yellow);
+}

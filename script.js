@@ -47,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const productoSeleccionado = productosGlobal.find(p => p.id === id);
         if (!productoSeleccionado) return;
 
-        // ¿Ya está en el carrito? Sumamos cantidad. Si no, lo agregamos.
         const productoEnCarrito = carrito.find(p => p.id === id);
         if (productoEnCarrito) {
           productoEnCarrito.cantidad += 1;
@@ -71,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
           mensajeDiv.style.padding = '0.5em';
           mensajeDiv.style.marginTop = '0.5em';
           mensajeDiv.style.borderRadius = '6px';
-          // Ocultar suavemente
           setTimeout(() => {
             mensajeDiv.style.opacity = '0';
             setTimeout(() => {
@@ -162,9 +160,13 @@ document.addEventListener("DOMContentLoaded", () => {
       itemsCarrito.innerHTML = "<p>Tu carrito está vacío</p>";
       totalCarrito.textContent = "";
       contadorCarrito.textContent = 0;
+      // Eliminar botón finalizar compra si existe
+      const btnFinalizarPrevio = vistaCarrito.querySelector('.btn-finalizar-compra');
+      if (btnFinalizarPrevio) btnFinalizarPrevio.remove();
       return;
     }
 
+    // Renderizar productos del carrito
     carrito.forEach((item, index) => {
       const div = document.createElement("div");
       div.classList.add("card");
@@ -186,15 +188,53 @@ document.addEventListener("DOMContentLoaded", () => {
     contadorCarrito.textContent = carrito.reduce((acc, p) => acc + p.cantidad, 0);
     localStorage.setItem("carrito", JSON.stringify(carrito));
 
-    // Agregar listeners a botones
-    document.querySelectorAll(".btn-mas").forEach(btn =>
+    // Botones de vaciar carrito y finalizar compra juntos y estilizados
+    // Eliminar contenedor de botones previo si existe
+    const prevBotonesContainer = vistaCarrito.querySelector('.botones-carrito');
+    if (prevBotonesContainer) prevBotonesContainer.remove();
+
+    if (carrito.length > 0) {
+      const botonesContainer = document.createElement('div');
+      botonesContainer.className = 'botones-carrito';
+
+      const vaciarCarritoBtn = document.createElement('button');
+      vaciarCarritoBtn.textContent = 'Vaciar carrito';
+      vaciarCarritoBtn.className = 'btn-carrito-control vaciar';
+
+      const finalizarCompraBtn = document.createElement('button');
+      finalizarCompraBtn.textContent = 'Finalizar compra';
+      finalizarCompraBtn.className = 'btn-carrito-control finalizar';
+
+      botonesContainer.appendChild(vaciarCarritoBtn);
+      botonesContainer.appendChild(finalizarCompraBtn);
+      vistaCarrito.insertBefore(botonesContainer, itemsCarrito);
+
+      vaciarCarritoBtn.addEventListener('click', () => {
+        carrito = [];
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        if (botonesContainer.parentNode) botonesContainer.remove();
+        renderVistaCarrito();
+      });
+
+      finalizarCompraBtn.addEventListener('click', () => {
+        carrito = [];
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        if (botonesContainer.parentNode) botonesContainer.remove();
+        mostrarSeccion('inicio');
+        mostrarMensajeCompra();
+        renderVistaCarrito();
+      });
+    }
+
+    // Agregar listeners a botones de cantidad y borrar
+    itemsCarrito.querySelectorAll(".btn-mas").forEach(btn =>
       btn.addEventListener("click", () => {
         carrito[btn.dataset.index].cantidad++;
         renderVistaCarrito();
       })
     );
 
-    document.querySelectorAll(".btn-menos").forEach(btn =>
+    itemsCarrito.querySelectorAll(".btn-menos").forEach(btn =>
       btn.addEventListener("click", () => {
         const i = btn.dataset.index;
         carrito[i].cantidad = Math.max(1, carrito[i].cantidad - 1);
@@ -202,31 +242,41 @@ document.addEventListener("DOMContentLoaded", () => {
       })
     );
 
-    document.querySelectorAll(".btn-borrar").forEach(btn =>
+    itemsCarrito.querySelectorAll(".btn-borrar").forEach(btn =>
       btn.addEventListener("click", () => {
         carrito.splice(btn.dataset.index, 1);
         renderVistaCarrito();
       })
     );
-
-    // Botón para vaciar el carrito (solo si hay items)
-    if (carrito.length > 0) {
-      const vaciarCarritoBtn = document.createElement('button');
-      vaciarCarritoBtn.textContent = 'Vaciar carrito';
-      vaciarCarritoBtn.className = 'btn-vaciar-carrito';
-      vaciarCarritoBtn.style.margin = '1rem auto 2rem auto';
-      vaciarCarritoBtn.style.display = 'block';
-      vistaCarrito.insertBefore(vaciarCarritoBtn, itemsCarrito);
-
-      vaciarCarritoBtn.addEventListener('click', () => {
-        carrito = [];
-        localStorage.setItem('carrito', JSON.stringify(carrito));
-        renderVistaCarrito();
-      });
-    }
   }
 
-  // Eliminar el botón de volver a la tienda (ya no es necesario)
+// Mostrar mensaje de confirmación de compra en el home
+function mostrarMensajeCompra() {
+  // Buscar la sección de inicio
+  const inicioSec = document.querySelector('main > section#inicio');
+  if (inicioSec) {
+    let mensaje = inicioSec.querySelector('.mensaje-compra');
+    if (mensaje) mensaje.remove();
+    mensaje = document.createElement('div');
+    mensaje.className = 'mensaje-compra';
+    mensaje.textContent = '¡Gracias por tu compra!';
+    mensaje.style.display = 'block';
+    mensaje.style.opacity = '1';
+    mensaje.style.color = '#388e3c';
+    mensaje.style.background = '#e8f5e9';
+    mensaje.style.padding = '1em';
+    mensaje.style.margin = '1em auto';
+    mensaje.style.borderRadius = '6px';
+    mensaje.style.textAlign = 'center';
+    inicioSec.insertBefore(mensaje, inicioSec.firstChild);
+    setTimeout(() => {
+      mensaje.style.opacity = '0';
+      setTimeout(() => {
+        mensaje.remove();
+      }, 1000);
+    }, 4000);
+  }
+}
   if (document.querySelector('.btn-cerrar-carrito')) {
     document.querySelector('.btn-cerrar-carrito').remove();
   }
