@@ -1,8 +1,13 @@
 # Analog Cam Shop
 
-Proyecot de pagina web orientada a la venta de Camaras Analogicas, desarrollada en HTML con estilo en CSS
+Sitio web para venta de cámaras analógicas, desarrollado con HTML, CSS y JavaScript.
 
-Incluye:
-Estructura limpi
-Multimedia (Imagen y video)
-Hosting en Github
+## Funcionalidades
+
+- Catálogo dinámico con tarjetas de productos (fetch desde productos.json)
+- Carrito persistente usando localStorage
+- Página de carrito con botones para vaciar y finalizar compra
+- Formulario de contacto con validación y envío vía Formspree
+- Buscador desplegable
+- Diseño responsive
+- Hosting en GitHub Pages
